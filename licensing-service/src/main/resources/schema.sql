@@ -7,7 +7,8 @@ CREATE TABLE licenses (
   product_name      TEXT NOT NULL,
   license_max       INT   NOT NULL,
   license_allocated INT,
-  comment           VARCHAR(100));
+  comment           VARCHAR(100)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 INSERT INTO licenses (license_id,  organization_id, license_type, product_name, license_max, license_allocated)

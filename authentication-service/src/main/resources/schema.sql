@@ -6,18 +6,19 @@ CREATE  TABLE users (
   user_name VARCHAR(100) NOT NULL ,
   password VARCHAR(100) NOT NULL ,
   enabled boolean NOT NULL ,
-  PRIMARY KEY (user_name));
+  PRIMARY KEY (user_name))
+  ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE user_roles (
   user_role_id SERIAL,
   user_name varchar(100) NOT NULL,
   role varchar(100) NOT NULL,
-  PRIMARY KEY (user_role_id));
+  PRIMARY KEY (user_role_id))  ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE user_orgs (
   organization_id   VARCHAR(100)  NOT NULL,
   user_name         VARCHAR(100)   NOT NULL,
-  PRIMARY KEY (user_name));
+  PRIMARY KEY (user_name))  ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO users(user_name,password,enabled) VALUES ('john.carnell','$2a$04$NX3QTkBJB00upxKeaKqFBeoIVc9JHvwVnj1lItxNphRj34wNx5wlu', true);
 INSERT INTO users(user_name,password,enabled) VALUES ('william.woodward','$2a$04$lM2hIsZVNYrQLi8mhvnTA.pheZtmzeivz6fyxCr9GZ6YSfP6YibCW', true);

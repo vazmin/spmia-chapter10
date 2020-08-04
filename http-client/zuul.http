@@ -1,0 +1,6 @@
+GET {{host_zuul}}/api/routes
+
+###
+GET {{host_zuul}}/api/licensing/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/
+Authorization: Bearer {{token}}
+tmx-correlation-id: TEST-CORRELATION-ID

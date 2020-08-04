@@ -1,3 +1,6 @@
+server:
+  port: 8911
+
 spring:
   application:
     name: organizationservice

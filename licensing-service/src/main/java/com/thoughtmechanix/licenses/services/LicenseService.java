@@ -7,6 +7,9 @@ import com.thoughtmechanix.licenses.config.ServiceConfig;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.model.Organization;
 import com.thoughtmechanix.licenses.repository.LicenseRepository;
+import com.thoughtmechanix.licenses.utils.UserContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,7 @@ import java.util.UUID;
 
 @Service
 public class LicenseService {
+    private static final Logger log = LoggerFactory.getLogger(LicenseService.class);
 
     @Autowired
     private LicenseRepository licenseRepository;
@@ -49,7 +53,7 @@ public class LicenseService {
     private void randomlyRunLong(){
       Random rand = new Random();
 
-      int randomNum = rand.nextInt((3 - 1) + 1) + 1;
+      int randomNum = rand.nextInt(3) + 1;
 
       if (randomNum==3) sleep();
     }
@@ -76,6 +80,7 @@ public class LicenseService {
                      @HystrixProperty(name="metrics.rollingStats.numBuckets", value="5")}
     )
     public List<License> getLicensesByOrg(String organizationId){
+        log.debug("LicenseService.getLicenseByOrg Correlation: {} ", UserContext.getCorrelationId());
         randomlyRunLong();
 
         return licenseRepository.findByOrganizationId(organizationId);
@@ -103,7 +108,7 @@ public class LicenseService {
     }
 
     public void deleteLicense(License license){
-        licenseRepository.delete( license.getLicenseId());
+        licenseRepository.delete( license);
     }
 
 }

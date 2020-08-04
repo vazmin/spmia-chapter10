@@ -10,22 +10,23 @@
   <name>Eagle Eye Organization Service</name>
   <description>Organization Service</description>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.4.RELEASE</version>
-  </parent>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Camden.SR5</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.1.RELEASE</version>
+    </parent>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -43,13 +44,13 @@
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-eureka</artifactId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-feign</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.cloud</groupId>-->
+<!--      <artifactId>spring-cloud-starter-feign</artifactId>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -63,7 +64,7 @@
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-hystrix</artifactId>
+      <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
     </dependency>
 
     <dependency>
@@ -76,30 +77,34 @@
       <artifactId>spring-cloud-starter-stream-kafka</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.h2database</groupId>-->
+<!--      <artifactId>h2</artifactId>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>9.1-901.jdbc4</version>
-    </dependency>
-
+<!--    <dependency>-->
+<!--      <groupId>postgresql</groupId>-->
+<!--      <artifactId>postgresql</artifactId>-->
+<!--      <version>9.1-901.jdbc4</version>-->
+<!--    </dependency>-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <scope>runtime</scope>
+      </dependency>
       <dependency>
           <groupId>org.springframework.cloud</groupId>
           <artifactId>spring-cloud-security</artifactId>
       </dependency>
       <dependency>
-          <groupId>org.springframework.security.oauth</groupId>
-          <artifactId>spring-security-oauth2</artifactId>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-oauth2</artifactId>
       </dependency>
-      <dependency>
-          <groupId>com.netflix.hystrix</groupId>
-          <artifactId>hystrix-javanica</artifactId>
-          <version>1.5.9</version>
-      </dependency>
+<!--      <dependency>-->
+<!--          <groupId>com.netflix.hystrix</groupId>-->
+<!--          <artifactId>hystrix-javanica</artifactId>-->
+<!--          <version>1.5.9</version>-->
+<!--      </dependency>-->
   </dependencies>
 
   <properties>
@@ -108,7 +113,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <start-class>com.thoughtmechanix.organization.Application</start-class>
     <docker.image.name>johncarnell/tmx-organization-service</docker.image.name>
+    <!--suppress UnresolvedMavenProperty -->
     <docker.image.tag>${env.BUILD_NAME}</docker.image.tag>
+      <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
   </properties>
 
   <build>

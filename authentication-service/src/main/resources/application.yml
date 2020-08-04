@@ -3,7 +3,11 @@
 logging:
   level:
     com.netflix: WARN
-    org.springframework.web: WARN
+    org:
+      springframework:
+        web: WARN
+        security: DEBUG
+
     com.thoughtmechanix: DEBUG
 
 eureka:
@@ -15,5 +19,6 @@ eureka:
     serviceUrl:
         defaultZone: http://localhost:8761/eureka/
 
-#server:
-#  contextPath:   /auth
+server:
+  servlet:
+    context-path: /auth

@@ -1,5 +1,7 @@
 package com.thoughtmechanix.licenses.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.Filter;
@@ -13,6 +15,9 @@ import java.io.IOException;
 
 @Component
 public class UserContextFilter implements Filter {
+
+    private static final Logger log = LoggerFactory.getLogger(UserContextFilter.class);
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
@@ -24,7 +29,7 @@ public class UserContextFilter implements Filter {
         UserContext.setUserId( httpServletRequest.getHeader(UserContext.USER_ID) );
         UserContext.setAuthToken( httpServletRequest.getHeader(UserContext.AUTH_TOKEN) );
         UserContext.setOrgId( httpServletRequest.getHeader(UserContext.ORG_ID) );
-
+        log.debug("UserContext Correlation id: {}", UserContext.getCorrelationId());
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
 

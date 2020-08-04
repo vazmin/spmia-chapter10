@@ -10,22 +10,23 @@
   <name>Config Server</name>
   <description>Config Server demo project</description>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.4.RELEASE</version>
-  </parent>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Camden.SR5</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.1.RELEASE</version>
+    </parent>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -40,7 +41,7 @@
 
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-eureka</artifactId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
   </dependencies>
 
@@ -50,7 +51,9 @@
     <start-class>com.thoughtmechanix.confsvr.ConfigServerApplication</start-class>
     <java.version>1.8</java.version>
     <docker.image.name>johncarnell/tmx-confsvr</docker.image.name>
+    <!--suppress UnresolvedMavenProperty -->
     <docker.image.tag>${env.BUILD_NAME}</docker.image.tag>
+      <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
   </properties>
   <build>
      <plugins>

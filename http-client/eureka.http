@@ -1,0 +1,8 @@
+### auth status
+
+GET {{host_eureka}}/eureka/apps/AUTHENTICATIONSERVICE
+Accept: application/json
+
+### Organization
+
+GET {{host_eureka}}/eureka/apps/organizationservice

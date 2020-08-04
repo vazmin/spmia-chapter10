@@ -9,6 +9,12 @@ spring:
           binder:
             zkNodes: localhost
             brokers: localhost
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/auth/user
+    client: # This property (client.grant-type)
+      grant-type: client_credentials
 
 #Setting the logging levels for the service
 logging:

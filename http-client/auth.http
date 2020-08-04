@@ -1,0 +1,28 @@
+POST {{host_auth}}/auth/oauth/token
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Basic eagleeye thisissecret
+
+--WebAppBoundary--
+Content-Disposition: form-data; name="grant_type"
+
+password
+--WebAppBoundary--
+Content-Disposition: form-data; name="scope"
+
+webclient
+--WebAppBoundary--
+Content-Disposition: form-data; name="username"
+
+william.woodward
+--WebAppBoundary--
+Content-Disposition: form-data; name="password"
+
+password2
+--WebAppBoundary--
+
+
+
+###
+GET {{host_auth}}/auth/user
+Authorization: Bearer {{token}}
+

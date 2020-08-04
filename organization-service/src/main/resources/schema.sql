@@ -5,7 +5,7 @@ CREATE TABLE organizations (
   name                   TEXT NOT NULL,
   contact_name           TEXT NOT NULL,
   contact_email          TEXT NOT NULL,
-  contact_phone          TEXT   NOT NULL);
+  contact_phone          TEXT   NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 INSERT INTO organizations (organization_id, name, contact_name, contact_email, contact_phone)

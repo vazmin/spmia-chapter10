@@ -1,3 +1,5 @@
+server:
+  port: 8921
 spring:
   application:
     name: licensingservice

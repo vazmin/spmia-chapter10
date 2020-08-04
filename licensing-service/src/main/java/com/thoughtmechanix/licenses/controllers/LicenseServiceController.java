@@ -3,6 +3,7 @@ package com.thoughtmechanix.licenses.controllers;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.services.LicenseService;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
+import com.thoughtmechanix.licenses.utils.UserContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class LicenseServiceController {
 
     @RequestMapping(value="/",method = RequestMethod.GET)
     public List<License> getLicenses( @PathVariable("organizationId") String organizationId) {
-
+        logger.debug("Found tmx-correlation-id in license-service-controller: {} ", UserContext.getCorrelationId());
         return licenseService.getLicensesByOrg(organizationId);
     }
 
